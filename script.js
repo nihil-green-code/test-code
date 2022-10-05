@@ -1,47 +1,33 @@
 'use strict';
 
-let rowLength = 5;
-let colLength = 5;
+/*
+step1 : "http://" 부분은 제외하고 추출.                             =>      daum.net
+step2 : 닷(.)부터 표시되는 문자열을 제외하여 추출.                   =>      daum
+step3 : '$' + 처음 3자리 + 총 글자 수 + url 의 14번째 문자.         =>      $dau4e
 
-/** @type {number[][]} */
-const array5 = new Array(rowLength);
+※ url 의 14번째 문자가 존재하지 않을 때는 ? 문자로 표시.            =>      $dau4?
+*/
 
-for (let row = 0; row < array5.length; row++) {
-  array5[row] = new Array(colLength);
-}
+let url = 'http://daum.net';
+let step1, step2, step3;
 
-// 행 고정 구조이고 행이 역방향, 열이 역방향이다.
-for (let row = rowLength - 1, value = 1; row >= 0; row--) {
-  for (let col = colLength - 1; col >= colLength - 1 - row; col--) {
-    array5[row][col] = value++;
-  }
-}
+// step1 = url.slice(url.indexOf('//')+2);
+step1 = url.split('//')[1];
+console.log(step1);
 
-// 임시 배열을 만들어주고,
-const tmp = new Array(rowLength);
+// url의 //부터 .까지 출력해야함.
+// = step1에서 0부터 .까지 출력해야함.
+// step2 = url.slice(url.indexOf('//')+2, url.indexOf('.'));
+// step2 = step1.slice(0, step1.indexOf('.'));
+step2 = step1.split('.')[1];
+console.log(step2);
 
-for (let row = 0; row < tmp.length; row++) {
-  tmp[row] = new Array(colLength);
-}
+// 배열은 1번째가 아닌 0번째부터 시작임에 유의.
+step3 = '$' + step2.slice(0, 3) + step2.length + (url[13] ? url[13] : '?');
 
-// 임시 배열에 180도 돌린 배열을 넣어준다.
-for (let row = rowLength - 1; row >= 0; row--) {
-  for (let col = colLength - 1; col >= 0; col--) {
-    tmp[rowLength - 1 - row][colLength - 1 - col] = array5[row][col];
-  }
-}
+// (url.length > 13 ? url[13] : '?')
+// length는 길이. url[13]는 인덱스 값 > 14번째 값 의미
+// 배열 연산자 url[13] 자체로도 논리 연산 가능!!!
+console.log(step3);
 
-// 임시 배열을 출력해준다.
-for (let row = 0; row < tmp.length; row++) {
-  for (let col = 0, value; col < tmp[row].length; col++) {
-    value = tmp[row][col];
-
-    if (col >= colLength - row) {
-      document.write('&nbsp;&nbsp;&nbsp;');
-    } else {
-      document.write(`${value / 10 < 1 ? '&nbsp;' : ''}${value++} `);
-    }
-  }
-
-  document.write('<br />');
-}
+console.log(parseInt('1', 10));
