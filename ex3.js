@@ -8,19 +8,19 @@
 
 let stName, kor, eng, math;
 
-// if (stName = prompt('학생명 : ')) {
-//   if (kor = +prompt('국어:')) {
-//     if (eng = +prompt('영어: ')) {
-//       if (math = +prompt('수학: ')) {
-//         alert(`${stName} 학생의 국어, 영어, 수학 점수의 평균: ${(kor + eng + math) / 3}`);
-//       }
-//     }
-//   }
-// }
+if (stName = prompt('학생명 : ')) {
+  if (kor = +prompt('국어:')) {
+    if (eng = +prompt('영어: ')) {
+      if (math = +prompt('수학: ')) {
+        alert(`${stName} 학생의 국어, 영어, 수학 점수의 평균: ${(kor + eng + math) / 3}`);
+      }
+    }
+  }
+}
 
-// if (!math) {
-//   alert('학생 정보가 순서대로 정확히 입력되지 않았습니다.');
-// }
+if (!math) {
+  alert('학생 정보가 순서대로 정확히 입력되지 않았습니다.');
+}
 
 (stName = prompt('학생명 : '))
   && (kor = +prompt('국어:'))
