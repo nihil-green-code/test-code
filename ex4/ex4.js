@@ -22,11 +22,16 @@
 'use strict';
 
 let stName = prompt('학생명: ');
+// 이름 받음.
 let sum = 0;
+// 점수를 더할 변수 준비.
 
-const subjects = ['국어점수', '영어점수', '수학점수', '합계', '평균'];
-const scores = [];
+const subjects = ['국어점수', '영어점수', '수학점수', '과학점수', '합계', '평균'];
+// 과목 배열. 과목을 추가하기만 하면 프로그램은 알아서 맞게 동작함.
+const scores = new Array(subjects.length);
+// 점수 배열 과목배열과 같은 공간으로 만들어야 하므로 이렇게 해줌.
 
+// 입력을 받아서 점수 넣는 것과 점수 합계, 평균을 여기서 다 구함.
 for (let i = 0; i < subjects.length; i++) {
   if (i < subjects.length - 2) {
     scores[i] = +prompt(`${subjects[i]}`);
@@ -38,11 +43,13 @@ for (let i = 0; i < subjects.length; i++) {
   }
 }
 
+// 여기서 출력.
 document.write('<table>');
 document.write(`<caption>&lt; ${stName} 학생의 성적 &gt;</caption>`);
 for (let i = 0, content; i < subjects.length; i++) {
   console.log(subjects.length, i);
   document.write('<tr>');
+  // 과목 배열과 점수 배열을 이용해 각 칸을 만듬.
   document.write(`<th scope="col">${subjects[i]}</th>`);
   document.write(`<td>${scores[i]} 점</td>`);
   document.write('</tr>');
