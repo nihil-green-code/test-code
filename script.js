@@ -1,10 +1,13 @@
-const person1 = {
-  name: 'NIHILncunia',
-};
+// 'use strict';
 
-const person2 = {
-  name: 'NIHILncunia',
-};
+console.log(this);
 
-console.log(person1 === person2); // 1번
-console.log(person1.name === person2.name); // 2번
+function func() {
+  console.log(this);
+}
+
+func();
+
+const func2 = () => {
+  console.log(this);
+};
